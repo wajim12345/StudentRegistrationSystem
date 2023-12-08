@@ -294,7 +294,7 @@ namespace StudentRegistrationSystem.BackEnd
 		}
 		public void InstructorHome(string id)
 		{
-			
+
 			foreach (Instructor instructor in InstructorList)
 			{
 				if (id == instructor.InstructorID)
@@ -305,6 +305,7 @@ namespace StudentRegistrationSystem.BackEnd
 					Console.WriteLine("2 - View Classlist");
 					Console.WriteLine("3 - Log out");
 					int selection = int.Parse(Console.ReadLine());
+
 					switch (selection)
 					{
 						case 1:
@@ -348,10 +349,6 @@ namespace StudentRegistrationSystem.BackEnd
 												Console.WriteLine($"Student Name: {student.Name}");
 												Console.WriteLine($"Email: {student.PrimaryEmail}\n");
 												break;
-											}
-											else
-											{
-												Console.WriteLine("Invalid ID");
 											}
 										}
 									}
@@ -401,6 +398,7 @@ namespace StudentRegistrationSystem.BackEnd
 						case 2:
 							Console.WriteLine("Enter Student ID:");
 							string sID = Console.ReadLine();
+							int n = 0;
 							foreach (Student student in StudentList)
 							{
 								if (sID == student.studentID)
@@ -418,13 +416,13 @@ namespace StudentRegistrationSystem.BackEnd
 											Console.WriteLine($"Course: {c.Code}\nInstructor: {c.Instructor}\nTime: {c.Time}\n");
 										}
 									}
-
+									n++;
 									break;
 								}
-								else
-								{
-									Console.WriteLine("Invalid ID");
-								}
+							}
+							if (n == 0)
+							{
+								Console.WriteLine("No Result Found");
 							}
 							Console.WriteLine("Press any key to continue...");
 							Console.ReadKey();
