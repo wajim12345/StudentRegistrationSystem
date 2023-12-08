@@ -8,10 +8,19 @@ namespace StudentRegistrationSystem.BackEnd.Entities
 {
 	internal class Schedule
 	{
+		//Property
 		public List<Class> EnrolledClasses { get; set; }
+
+		//Construct
 		public Schedule() 
 		{
 		
+		}
+
+		//Method
+		public void DisplaySchedule()
+		{
+			//display a formatted class schedule
 		}
 	}
 }
