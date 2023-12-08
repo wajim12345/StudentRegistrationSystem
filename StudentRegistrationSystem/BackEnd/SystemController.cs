@@ -328,31 +328,32 @@ namespace StudentRegistrationSystem.BackEnd
 									Console.WriteLine($"Time: {c.Time}");
 									Console.WriteLine($"Class List: {string.Join(',', c.Enrolled)}");
 								}
-								bool viewStudent = true;
-								while (viewStudent)
+							}
+							bool viewStudent = true;
+							while (viewStudent)
+							{
+								Console.WriteLine("Enter Student ID to view Student Information");
+								Console.WriteLine("Or enter 0 to exit");
+								string sID = Console.ReadLine();
+								if (sID == "0")
 								{
-									Console.WriteLine("Enter Student ID to view Student Information");
-									Console.WriteLine("Or enter 0 to exit");
-									string sID = Console.ReadLine();
-									if (sID == "0")
+									viewStudent = false;
+									InstructorHome(id);
+								}
+								else
+								{
+									foreach (Student student in StudentList)
 									{
-										viewStudent = false;
-										InstructorHome(id);
-									}
-									else
-									{
-										foreach (Student student in StudentList)
+										if (sID == student.studentID)
 										{
-											if (sID == student.studentID)
-											{
-												Console.WriteLine($"Student ID: {student.studentID}");
-												Console.WriteLine($"Student Name: {student.Name}");
-												Console.WriteLine($"Email: {student.PrimaryEmail}\n");
-												break;
-											}
+											Console.WriteLine($"Student ID: {student.studentID}");
+											Console.WriteLine($"Student Name: {student.Name}");
+											Console.WriteLine($"Email: {student.PrimaryEmail}\n");
+											break;
 										}
 									}
 								}
+
 
 							}
 							break;
@@ -431,6 +432,7 @@ namespace StudentRegistrationSystem.BackEnd
 						case 3:
 							Console.WriteLine("Enter Student ID:");
 							sID = Console.ReadLine();
+							int k = 0;
 							foreach (Student student in StudentList)
 							{
 								if (sID == student.studentID)
@@ -443,13 +445,19 @@ namespace StudentRegistrationSystem.BackEnd
 									}
 									else
 									{
+										Console.WriteLine($"Student Name: {student.Name}");
 										Console.WriteLine("Student Emergency information missing");
 									}
 								}
 								else
 								{
-									Console.WriteLine("Invalid ID");
+									k++;
 								}
+
+							}
+							if (k == 0)
+							{
+								Console.WriteLine("No Result Found");
 							}
 							Console.WriteLine("Press any key to continue...");
 							Console.ReadKey();
